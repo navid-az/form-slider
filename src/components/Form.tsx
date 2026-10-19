@@ -69,12 +69,12 @@ const dentalBookingSchema = z.object({
             "other",
         ],
         { message: "Please select a treatment." }
-    ),
+    ).nullable(),
 
     dentist_preference: z.enum(
         ["any", "dr_sarah", "dr_james"],
         { message: "Please select a dentist preference." }
-    ),
+    ).nullable(),
 
     appointment_date: z
         .string()
@@ -116,8 +116,8 @@ type DentalBookingValues = z.infer<typeof dentalBookingSchema>;
 // --------------------------------------------------
 
 const defaultValues: DentalBookingValues = {
-    service_type: "",
-    dentist_preference: "",
+    service_type: null,
+    dentist_preference: null,
     appointment_date: "",
     appointment_time: "",
     patient_name: "",
